@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+:root {
+    --color-white: hsl(252, 30%, 100%);
+    --color-black: hsl(252, 30%, 10%);
+
+    --color-light: hsl(252, 30%, 95%);
+    --color-dark: hsl(252, 30%, 17%);
+    --color-gray: hsl(252, 15%, 65%);
+    --color-gray-code: hsl(252, 15%, 75%);
+
+    --color-primary: hsl(261, 100%, 22%);
+    --color-secondary: hsl(252, 100%, 94%);
+
+    --color-sucess: hsl(120, 95%, 65%);
+    --color-danger: hsl(0, 95%, 65%);
+
+    --border-radius: 2rem;
+    --card-border-radius: 1rem;
+    --btn--padding: 0.6rem 2rem;
+    --search-padding: 0.6rem 1rem;
+    --card--padding: 1rem;
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: -18rem;
+    --width-slide-bar: 16vw;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--color-dark);
+    background: var(--color-light);
+    overflow-x: hidden;
+}
+
+/******************* GENERAL STYLES *******************/
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile-photo {
+    width: 2.7rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.org-photo {
+    width: 3rem;
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.text-bold {
+    font-weight: 500;
+}
+
+.text-muted {
+    color: var(--color-gray);
+}
+
+code {
+    background-color: var(--color-gray-code);
+    margin: 0.2rem;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.5rem;
+}
+
+hr {
+    height: 0;
+    background: transparent;
+    border-bottom: 1.5px solid var(--color-gray-code);
+    margin: 0.15rem 0 0.3rem 0;
+}
+
+p {
+    line-height: 1.6rem;
+    padding: 0 0 1rem 0;
+}
+
+
+/******************* NAVBAR *******************/
+
+nav {
+    width: 100%;
+    background: var(--color-white);
+    padding: 0.7rem 0;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+nav ul {
+    list-style-type:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav li {
+    display: inline-block;
+    padding: 0 1rem;
+}
+
+nav li a{
+    color: var(--color-dark);
+}
+
+nav li a:hover {
+    color: var(--color-primary);
+}
+
+/******************* MAIN *******************/
+
+main {
+    position: relative;
+    top: 6rem;
+}
+
+main .container {
+    display: grid;
+    grid-template-columns: var(--width-slide-bar) auto;
+    column-gap: 2rem;
+    position: relative;
+}
+
+/****** LEFT ******/
+
+main .container .left {
+    height: auto;
+    position: sticky;
+    top: var(--stiky-top-left);
+}
+
+main .container .left .profile {
+    padding: var(--card--padding);
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    width: 100%;
+}
+
+.left .sidebar {
+    position: fixed;
+    margin-top: 1rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+}
+
+.left .sidebar .menu-item {
+    width: var(--width-slide-bar);
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    cursor: pointer;
+    transition: all, 300ms, ease;
+    position: relative;
+}
+
+.left .sidebar .menu-item:hover {
+    background: var(--color-secondary);
+}
+
+.left .sidebar i {
+    font-size: 1.4rem;
+    color: var(--color-gray);
+    margin-left: 2rem;
+    position: relative;
+}
+
+.left .sidebar h3 {
+    margin-left: 1.5rem;
+    font-size: 1rem;
+}
+
+.left .sidebar .active {
+    background: var(--color-secondary);
+}
+
+.left .sidebar .active i, .left .sidebar .active h3 {
+    color: var(--color-primary);
+}
+
+.left .sidebar .active::before {
+    content: "";
+    display: block;
+    width: 0.5rem;
+    height: 100%;
+    position: absolute;
+    background: var(--color-primary);
+}
+
+.left .sidebar .menu-item:first-child.active {
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.left .sidebar .menu-item:last-child.active {
+    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-right-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.left .sidebar .menu-item:first-child:hover {
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.left .sidebar .menu-item:last-child:hover {
+    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-right-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+
+/****** RIGHT ******/
+
+.right .unactive {
+    display: none;
+    font-size: 0;
+}
+
+.right .posts .post {
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card--padding);
+    font-size: 0.85rem;
+    margin: 0 0 1.25rem 0;
+    line-height: 1.5;
+}
+
+.right .post .head {
+    display: flex;
+    column-gap: 1rem;
+}
+
+.right .post .info {
+    display: inline-block;
+    margin-right: 1.5rem;
+    padding: 0 4rem 0 0;
+}
+
+
+.right .post li .sublist {
+    list-style-type: circle;
+    padding: 0.15rem 0 0.15rem 1rem;
+}
+
+.right .post li {
+    list-style: square;
+    list-style-position: inside;
+    padding: 0 0.8rem;
+}
+
+.right .post .photo {
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    margin: 0.7rem 0;
+}
+
+.right .posts .readme {
+    line-height: 2rem;
+}
+
+.right .posts h3 {
+    padding: 0.2rem 0 0 0;
+}
+
+.right .posts .readme h3 {
+    padding: 0.8rem 0 0 0;
+}
+
+.right .grid-3 {
+    column-count: 3;
+    padding: 0.5rem;
+}
+
+.right .grid-2 {
+    column-count: 2;
+    padding: 0.5rem;
+}
+
+.right img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 0.2rem;
+    margin-bottom: 0.9rem;
+}
+
+/*
+    DIFFERENT SCREEN SIZES
+*/
+
+@media screen and (max-width: 1200 px) {
+    .container {
+        width: 96%;
+    }
+
+    main .container {
+        grid-template-columns: 5rem auto;
+        grid-gap: 1rem;
+    }
+
+    .left {
+        width: 5rem;
+        z-index: 5;
+    }
+
+    main .container .left .profile {
+        display: none;
+    }
+
+    .sidebar h3 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992 px) {
+    .container {
+        width: 96%;
+    }
+
+    main .container {
+        grid-template-columns: 0 auto;
+        grid-gap: 1rem;
+    }
+
+    .left {
+        width: 5rem;
+        z-index: 5;
+    }
+
+    main .container .left .profile {
+        display: none;
+    }
+
+    .sidebar h3 {
+        display: none;
+    }
+}
